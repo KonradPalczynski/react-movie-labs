@@ -17,7 +17,7 @@ export const getMovies = () => {
 
 export const getUpcomingMovies = () => {
   return fetch(
-    `https://api.themoviedb.org/3/movie/upcoming?api_key=19858f242dba8a9e6289cf36b1923f32&language=en-US&page=1`
+    `https://api.themoviedb.org/3/movie/upcoming?api_key=${import.meta.env.VITE_TMDB_KEY}&language=en-US&page=1`
   )
     .then(res => res.json())
     .then(json => json.results);
