@@ -11,6 +11,7 @@ import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import { Link } from "react-router";
 import Button from "@mui/material/Button";
+import MovieCast from "../movieCast";
 
 
 
@@ -83,6 +84,9 @@ const [drawerOpen, setDrawerOpen] = useState(false);
             Recommend Movies
           </Button>
         </Link>
+
+        <MovieCast movie={movie} />
+
             <Fab
         color="secondary"
         variant="extended"
