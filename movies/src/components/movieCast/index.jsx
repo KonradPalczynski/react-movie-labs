@@ -9,6 +9,7 @@ import { getMovieCredits } from "../../api/tmdb-api";
 import { useQuery } from "@tanstack/react-query";
 import Spinner from '../spinner'
 import Typography from "@mui/material/Typography";
+import { Link } from "react-router";
 
 export default function MovieCast({ movie }) {
     const { data, error, isPending, isError } = useQuery({
@@ -45,7 +46,7 @@ export default function MovieCast({ movie }) {
           {cast.map((c) => (
             <TableRow key={c.id}>
               <TableCell component="th" scope="row">
-                {c.name}
+                <Link to={`/person/${c.id}`}>{c.name}</Link>
               </TableCell>
               <TableCell align="right">{c.character}</TableCell>
             </TableRow>
