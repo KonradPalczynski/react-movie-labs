@@ -6,6 +6,7 @@ import { getPerson } from "../api/tmdb-api";
 import PersonHeader from "../components/headerPerson";
 import PersonDetails from "../components/personDetails";
 import Spinner from "../components/spinner";
+import PersonMovies from "../components/personMovies";
 
 const PersonDetailsPage = () => {
     const { id } = useParams();
@@ -47,6 +48,7 @@ const PersonDetailsPage = () => {
           <PersonDetails person={person}/>
         </Grid>
       </Grid>
+      <PersonMovies person={person} />
     </>
   );
 };
