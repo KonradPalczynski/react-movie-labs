@@ -9,6 +9,8 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import { Link } from "react-router";
+import Button from "@mui/material/Button";
 
 
 
@@ -75,6 +77,12 @@ const [drawerOpen, setDrawerOpen] = useState(false);
           </li>
         ))}
       </Paper>
+
+      <Link to={`/movies/${movie.id}/recommendations`}>
+          <Button variant="outlined" size="medium" color="primary">
+            Recommend Movies
+          </Button>
+        </Link>
             <Fab
         color="secondary"
         variant="extended"
