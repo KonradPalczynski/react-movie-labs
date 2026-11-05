@@ -1,7 +1,6 @@
-import PageTemplate from "../components/templateMoviePage";
-import ReviewForm from "../components/reviewForm";
+import PageTemplate from "../components/templateMovieListPage";
 import { useQuery } from "@tanstack/react-query";
-import { getMovie, getPopularMovies } from "../api/tmdb-api";
+import { getPopularMovies } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import AddToFavoritesIcon from "../components/cardIcons/addToFavorites";
 
@@ -19,13 +18,13 @@ const PopularMoviesPage = () => {
     return <h1>{error.message}</h1>;
   }
   return (
-    <PageTemplate>
+    <PageTemplate
         title = "Popular Movies"
         movies = {data.results}
         action = {(movie) => {
             return <AddToFavoritesIcon movie={movie} />;
         }}
-        </PageTemplate>
+        />
         
         
         
