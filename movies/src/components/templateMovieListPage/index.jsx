@@ -8,6 +8,7 @@ function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
   const [genreFilter, setGenreFilter] = useState("0");
   const [ratingFilter, setRatingFilter] = useState("0");
+  const [sortOption, setSortOption] = useState("default");
   const [yearFilter, setYearFilter] = useState("");
   const genreId = Number(genreFilter);
   const minRating = Number(ratingFilter)
@@ -28,11 +29,29 @@ function MovieListPageTemplate({ movies, title, action }) {
         : (m.release_date).startsWith(yearFilter);
     });
 
+    if (sortOption === "title") {
+      displayedMovies.sort((a, b) => a.title.localeCompare(b.title));
+    } 
+    else if (sortOption === "rating") {
+      displayedMovies.sort((a, b) => b.vote_average - a.vote_average);
+    } 
+    else if (sortOption === "newest") {
+      displayedMovies.sort((a, b) => b.release_date.localeCompare(a.release_date));
+    } 
+    else if (sortOption === "oldest") {
+      displayedMovies.sort((a, b) => a.release_date.localeCompare(b.release_date));
+    } 
+    else if (sortOption === "popularity") {
+      displayedMovies.sort((a, b) => a.popularity - b.popularity);
+    }
+
   const handleChange = (type, value) => {
+    console.log(type,value);
     if (type === "name") setNameFilter(value);
     else if (type === "genre") setGenreFilter(value);
     else if (type === "rating") setRatingFilter(value);
     else if (type === "year") setYearFilter(value);
+    else if (type === "sort") setSortOption(value);
   };
 
   return (
@@ -52,6 +71,7 @@ function MovieListPageTemplate({ movies, title, action }) {
             genreFilter={genreFilter}
             ratingFilter={ratingFilter}
             yearFilter={yearFilter}
+            sortOption={sortOption}
           />
         </Grid>
           <MovieList action={action} movies={displayedMovies}></MovieList>
