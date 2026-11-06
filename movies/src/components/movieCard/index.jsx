@@ -15,6 +15,7 @@ import { Link } from "react-router";
 import Avatar from '@mui/material/Avatar';
 import { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
+import Rating from "@mui/material/Rating";
 
 
 
@@ -74,6 +75,12 @@ export default function MovieCard({ movie, action }) {
             </Typography>
           </Grid>
         </Grid>
+        <Rating
+        value={movie.vote_average /2}
+        precision={0.5}
+        readOnly
+        sx={{marginTop: 1}}
+        />
       </CardContent>
             <CardActions disableSpacing>
       
