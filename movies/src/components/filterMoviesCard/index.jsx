@@ -51,6 +51,14 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "name", e.target.value);
   };
 
+  const handleRatingChange = (e) => {
+    handleChange(e, "rating", e.target.value);
+  };
+
+  const handleYearChange = (e) => {
+    handleChange(e, "year", e.target.value);
+  };
+
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
   };
@@ -98,6 +106,36 @@ export default function FilterMoviesCard(props) {
             })}
           </Select>
         </FormControl>
+
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="genre-label">Genre</InputLabel>
+            <Select
+    labelId="rating-label"
+    id="rating-select"
+    value={props.genreFilter}
+    onChange={handleRatingChange}
+             >
+          <MenuItem value="0">Any</MenuItem>
+          <MenuItem value="5">+5</MenuItem>
+          <MenuItem value="6">+6</MenuItem>
+          <MenuItem value="7">+7</MenuItem>
+          <MenuItem value="8">+8</MenuItem>
+
+            
+          </Select>
+        </FormControl>
+
+        <TextField
+        sx={{...formControl}}
+        id="year-filter"
+        label="release year"
+        type="number"
+        variant="filled"
+        value={props.yearFilter}
+        onChange={handleYearChange}
+        />
+
+        
       </CardContent>
       <CardMedia
         sx={{ height: 300 }}
