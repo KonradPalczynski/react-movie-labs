@@ -11,6 +11,7 @@ const AddToFavoritesIcon = ({ movie }) => {
     e.preventDefault();
     context.addToFavorites(movie);
   };
+  
 
   return (
     <Tooltip title="Add to favourites">
