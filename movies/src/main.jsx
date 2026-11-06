@@ -16,6 +16,9 @@ import NowPlayingMoviesPage from "./pages/nowPlayingMoviesPage";
 import MovieRecommendationsPage from "./pages/movieRecommendationsPage";
 import PersonDetailsPage from "./pages/personDetailsPage";
 import PlaylistMoviesPage from "./pages/playlistMoviesPage";
+import theme from "./theme";
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,6 +35,8 @@ const queryClient = new QueryClient({
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+      <CssBaseline/>
       <BrowserRouter>
         <SiteHeader />
         <MoviesContextProvider>
@@ -52,6 +57,7 @@ const App = () => {
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
+      </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
