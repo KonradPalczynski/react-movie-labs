@@ -38,8 +38,8 @@ const App = () => {
       <ThemeProvider theme={theme}>
       <CssBaseline/>
       <BrowserRouter>
-        <SiteHeader />
         <MoviesContextProvider>
+          <SiteHeader />
           <Routes>
             <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
             <Route path="/movies/upcoming" element={<UpcomingPage />} />

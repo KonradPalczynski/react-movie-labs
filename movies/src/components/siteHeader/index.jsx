@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,8 @@ import { useNavigate } from "react-router";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import Badge from "@mui/material/Badge";
+import { MoviesContext } from "../../contexts/moviesContext";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
@@ -22,6 +24,14 @@ const SiteHeader = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
   
   const navigate = useNavigate();
+
+  const {favorites, playlist} = useContext(MoviesContext);
+
+  const getCount = (label) => {
+    if (label === "Favorites") return favorites.length;
+    if (label === "Playlist") return playlist.length;
+    return 0;
+  };
 
   const menuOptions = [
     { label: "Home", path: "/" },
@@ -83,7 +93,14 @@ const SiteHeader = () => {
                       key={opt.label}
                       onClick={() => handleMenuSelect(opt.path)}
                     >
+
+                      <Badge
+                       badgeContent={getCount(opt.label)}
+                       color="primary"
+                       sx ={{paddingRight: 1}}
+                       >
                       {opt.label}
+                      </Badge>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -96,7 +113,13 @@ const SiteHeader = () => {
                     color="inherit"
                     onClick={() => handleMenuSelect(opt.path)}
                   >
+                    <Badge
+                       badgeContent={getCount(opt.label)}
+                       color="primary"
+                       sx ={{paddingRight: 1}}
+                       >
                     {opt.label}
+                    </Badge>
                   </Button>
                 ))}
               </>
