@@ -3,6 +3,7 @@ import Header from "../headerMovieList";
 import FilterCard from "../filterMoviesCard";
 import MovieList from "../movieList";
 import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 
 function MovieListPageTemplate({ movies, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
@@ -73,8 +74,20 @@ function MovieListPageTemplate({ movies, title, action }) {
             yearFilter={yearFilter}
             sortOption={sortOption}
           />
+          <Typography variant="body2" sx={{ marginTop: 1, textAlign: "center"}}>
+            Showing {displayedMovies.length} of {movies.length} movies
+            </Typography>
         </Grid>
+
+        {displayedMovies.length === 0 ? (
+           <Grid size={{xs:12, sm:6, md:8, lg:9, xl:10 }} sx={{padding: "20px"}}>
+            <Typography variant="h6">
+              No movies match your filters.
+            </Typography>
+            </Grid>
+        ) : (
           <MovieList action={action} movies={displayedMovies}></MovieList>
+        )}
       </Grid>
     </Grid>
   );
