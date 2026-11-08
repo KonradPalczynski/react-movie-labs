@@ -99,6 +99,8 @@ export default function FilterMoviesCard(props) {
     defaultValue=""
     value={props.genreFilter}
     onChange={handleGenreChange}
+    notched
+    label="Genre"
   >
 
             {genres.map((genre) => {
@@ -118,6 +120,8 @@ export default function FilterMoviesCard(props) {
     id="rating-select"
     value={props.ratingFilter}
     onChange={handleRatingChange}
+    notched
+    label="Minimum Rating"
              >
           <MenuItem value="0">Any</MenuItem>
           <MenuItem value="5">+5</MenuItem>
@@ -129,15 +133,26 @@ export default function FilterMoviesCard(props) {
           </Select>
         </FormControl>
 
-        <TextField
-        sx={{...formControl}}
-        id="year-filter"
-        label="release year"
-        type="number"
-        variant="filled"
-        value={props.yearFilter}
-        onChange={handleYearChange}
-        />
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="decade-label" shrink >Decade</InputLabel>
+            <Select
+    labelId="decade-label"
+    id="decade-select"
+    value={props.yearFilter}
+    onChange={handleYearChange}
+    displayEmpty
+    notched
+    label="Decade"
+             >
+          <MenuItem value="">Any</MenuItem>
+          <MenuItem value="202">2020s</MenuItem>
+          <MenuItem value="201">2010s</MenuItem>
+          <MenuItem value="200">2000s</MenuItem>
+          <MenuItem value="199">1990s</MenuItem>
+          <MenuItem value="198">1980s</MenuItem>
+          <MenuItem value="197">1970s</MenuItem>
+          </Select>
+          </FormControl>
 
         <FormControl sx={{...formControl}}>
           <InputLabel id="sort-label">Sort by</InputLabel>
@@ -146,6 +161,8 @@ export default function FilterMoviesCard(props) {
     id="sort-select"
     value={props.sortOption}
     onChange={handleSortChange}
+    notched
+    label="Sort By"
              >
           <MenuItem value="default">Any</MenuItem>
           <MenuItem value="title">Title (A-Z)</MenuItem>
