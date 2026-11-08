@@ -19,6 +19,7 @@ import PlaylistMoviesPage from "./pages/playlistMoviesPage";
 import theme from "./theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
+import SearchMoviesPage from "./pages/searchMoviesPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -54,6 +55,7 @@ const App = () => {
             <Route path="/movies/:id/recommendations" element={<MovieRecommendationsPage />} />
             <Route path="/person/:id" element={<PersonDetailsPage />} />
             <Route path="/movies/playlist" element={<PlaylistMoviesPage />} />
+            <Route path="/search" element={<SearchMoviesPage/>} />
           </Routes>
         </MoviesContextProvider>
       </BrowserRouter>
