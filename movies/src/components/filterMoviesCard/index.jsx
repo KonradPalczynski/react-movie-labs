@@ -13,6 +13,7 @@ import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg';
 import { getGenres } from "../../api/tmdb-api";
 import { useQuery } from '@tanstack/react-query';
 import Spinner from '../spinner';
+import Button from "@mui/material/Button";
 
 
 
@@ -66,6 +67,14 @@ export default function FilterMoviesCard(props) {
   const handleGenreChange = (e) => {
     handleChange(e, "genre", e.target.value);
   };
+
+  const handleReset = () => {
+    props.onUserInput("name", "");
+    props.onUserInput("genre", "0");
+    props.onUserInput("rating", "0");
+    props.onUserInput("year", "");
+    props.onUserInput("sort", "default");
+  }
 
 
 
@@ -176,19 +185,14 @@ export default function FilterMoviesCard(props) {
         </FormControl>
 
         
+      <Button
+      variant="outlined"
+      onClick={handleReset}
+      sx={{ margin:1, width:"90%"}}
+      >
+        Reset Filters
+      </Button>
       </CardContent>
-      <CardMedia
-        sx={{ height: 300 }}
-        image={img}
-        title="Filter"
-      />
-      <CardContent>
-        <Typography variant="h5" component="h1">
-          <SearchIcon fontSize="large" />
-          Filter the movies.
-          <br />
-        </Typography>
-      </CardContent>
-    </Card>
+      </Card>
   );
 }
